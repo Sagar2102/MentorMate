@@ -67,7 +67,7 @@ const Login = () => {
 
   useEffect(() => {
     if (registerIsSuccess && registerData) {
-      toast.success(registerData.message || "Signup successful.");
+      toast.success(registerData.message || "Signup successful. Move to Login.");
     }
     if (registerError) {
       toast.error(registerError.data.message || "Signup Failed");
@@ -77,7 +77,7 @@ const Login = () => {
       navigate("/"); // Navigate to the home page on successful login
     }
     if (loginError) {
-      toast.error(loginError.data.message || "Login Failed");
+      toast.error(loginError.message || "Login Failed");
     }
   }, [
     loginIsLoading,
@@ -90,7 +90,7 @@ const Login = () => {
 
   return (
     <div className="flex items-center w-full justify-center mt-20">
-      <Tabs defaultValue="account" className="w-[400px]">
+      <Tabs defaultValue="login" className="w-[400px]">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="signup">Signup</TabsTrigger>
           <TabsTrigger value="login">Login</TabsTrigger>
@@ -136,6 +136,125 @@ const Login = () => {
                   placeholder="Eg. xyz"
                   required={true}
                 />
+              </div>
+              <div className="space-y-1">
+                <Label htmlFor="username">Role</Label>
+                {/* <Input
+                  type="role"
+                  name="role"
+                  value={signupInput.role}
+                  onChange={(e) => changeInputHandler(e, "signup")}
+                  placeholder="Eg. Student"
+                  required={true}
+                /> */}
+                {/* <select
+                  name="role"
+                  value={signupInput.role}
+                  onChange={(e) => changeInputHandler(e, "signup")}
+                  required={true}
+                >
+                  <option value="" disabled>
+                    Select Role
+                  </option>
+                  <option value="Student">Student</option>
+                  <option value="Instructor">Instructor</option>
+                </select> */}
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "10px",
+                  }}
+                >
+                  <label
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      cursor: "pointer",
+                    }}
+                  >
+                    {/* Student Text */}
+                    <span
+                      onClick={() =>
+                        changeInputHandler(
+                          { target: { name: "role", value: "student" } },
+                          "signup"
+                        )
+                      }
+                      style={{
+                        marginRight: "10px",
+                        fontWeight:
+                          signupInput.role === "student" ? "bold" : "normal",
+                        opacity: signupInput.role === "student" ? 1 : 0.6,
+                        cursor: "pointer",
+                      }}
+                    >
+                      Student
+                    </span>
+
+                    {/* Toggle Switch */}
+                    <div
+                      onClick={() =>
+                        changeInputHandler(
+                          {
+                            target: {
+                              name: "role",
+                              value:
+                                signupInput.role === "student"
+                                  ? "instructor"
+                                  : "student",
+                            },
+                          },
+                          "signup"
+                        )
+                      }
+                      style={{
+                        width: "50px",
+                        height: "25px",
+                        backgroundColor: "#ccc",
+                        borderRadius: "25px",
+                        position: "relative",
+                        cursor: "pointer",
+                        transition: "background-color 0.3s ease",
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: "20px",
+                          height: "20px",
+                          backgroundColor: "#000",
+                          borderRadius: "50%",
+                          position: "absolute",
+                          top: "50%",
+                          left: signupInput.role === "student" ? "5px" : "25px",
+                          
+                          transform: "translateY(-50%)",
+                          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
+                          transition: "left 0.3s ease",
+                        }}
+                      ></div>
+                    </div>
+
+                    {/* Instructor Text */}
+                    <span
+                      onClick={() =>
+                        changeInputHandler(
+                          { target: { name: "role", value: "instructor" } },
+                          "signup"
+                        )
+                      }
+                      style={{
+                        marginLeft: "10px",
+                        fontWeight:
+                          signupInput.role === "instructor" ? "bold" : "normal",
+                        opacity: signupInput.role === "instructor" ? 1 : 0.6,
+                        cursor: "pointer",
+                      }}
+                    >
+                      Instructor
+                    </span>
+                  </label>
+                </div>
               </div>
             </CardContent>
             <CardFooter>
