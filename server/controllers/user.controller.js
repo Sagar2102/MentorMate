@@ -3,41 +3,82 @@ import bcrypt from "bcryptjs";
 import { generateToken } from "../utils/generateToken.js";
 import { deleteMediaFromCloudinary, uploadMedia } from "../utils/cloudinary.js";
 
-export const register = async (req,res) => {
-    try {
+// export const register = async (req,res) => {
+//     try {
        
-        const {name, email, password} = req.body; // patel214
-        if(!name || !email || !password){
+//         const {name, email, password} = req.body; // patel214
+//         if(!name || !email || !password){
+//             return res.status(400).json({
+//                 success:false,
+//                 message:"All fields are required."
+//             })
+//         }
+//         const user = await User.findOne({email});
+//         if(user){
+//             return res.status(400).json({
+//                 success:false,
+//                 message:"User already exist with this email."
+//             })
+//         }
+//         const hashedPassword = await bcrypt.hash(password, 10);
+//         await User.create({
+//             name,
+//             email,
+//             password:hashedPassword
+//         });
+//         return res.status(201).json({
+//             success:true,
+//             message:"Account created successfully."
+//         })
+//     } catch (error) {
+//         console.log(error);
+//         return res.status(500).json({
+//             success:false,
+//             message:"Failed to register"
+//         })
+//     }
+// }
+export const register = async (req, res) => {
+    try {
+        const { name, email, password, role } = req.body; // role added here
+        if (!name || !email || !password || !role) { // Validate role as well
             return res.status(400).json({
-                success:false,
-                message:"All fields are required."
-            })
+                success: false,
+                message: "All fields are required, including role."
+            });
         }
-        const user = await User.findOne({email});
-        if(user){
+
+        const user = await User.findOne({ email });
+        if (user) {
             return res.status(400).json({
-                success:false,
-                message:"User already exist with this email."
-            })
+                success: false,
+                message: "User already exists with this email."
+            });
         }
+
         const hashedPassword = await bcrypt.hash(password, 10);
+        
+        // Save user with role
         await User.create({
             name,
             email,
-            password:hashedPassword
+            password: hashedPassword,
+            role // role is included in the database save
         });
+
         return res.status(201).json({
-            success:true,
-            message:"Account created successfully."
-        })
+            success: true,
+            message: "Account created successfully."
+        });
     } catch (error) {
         console.log(error);
         return res.status(500).json({
-            success:false,
-            message:"Failed to register"
-        })
+            success: false,
+            message: "Failed to register."
+        });
     }
-}
+};
+
 export const login = async (req,res) => {
     try {
         const {email, password} = req.body;
