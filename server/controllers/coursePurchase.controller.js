@@ -162,20 +162,58 @@ export const getCourseDetailWithPurchaseStatus = async (req, res) => {
   }
 };
 
-export const getAllPurchasedCourse = async (_, res) => {
+// export const getAllPurchasedCourse = async (_, res) => {
+//   try {
+//     const purchasedCourse = await CoursePurchase.find({
+//       status: "completed",
+//     }).populate("courseId");
+//     if (!purchasedCourse) {
+//       return res.status(404).json({
+//         purchasedCourse: [],
+//       });
+//     }
+//     return res.status(200).json({
+//       purchasedCourse,
+//     });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+export const getAllPurchasedCourse = async (req, res) => {
   try {
+    const userId = req.id; // Logged-in user ID from isAuthenticated middleware
+
+    // Fetch the logged-in user to check their role
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // If the user is not an instructor, return an error
+    if (user.role !== "instructor") {
+      return res.status(403).json({ message: "Access denied. Only instructors can view purchased courses." });
+    }
+
+    // Fetch all courses created by the logged-in instructor
+    const courses = await Course.find({ creator: userId });
+
+    // Fetch purchased courses for the instructor's courses
     const purchasedCourse = await CoursePurchase.find({
-      status: "completed",
+      courseId: { $in: courses.map((course) => course._id) }, // Filter by instructor's courses
+      status: "completed", // Only include completed purchases
     }).populate("courseId");
+
     if (!purchasedCourse) {
       return res.status(404).json({
         purchasedCourse: [],
       });
     }
+
     return res.status(200).json({
       purchasedCourse,
     });
   } catch (error) {
     console.log(error);
+    return res.status(500).json({ message: "Failed to fetch purchased courses" });
   }
 };

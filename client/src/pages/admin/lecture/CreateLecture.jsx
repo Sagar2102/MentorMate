@@ -50,8 +50,8 @@ const CreateLecture = () => {
           Let's add lectures, add some basic details for your new lecture
         </h1>
         <p className="text-sm">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus,
-          laborum!
+          {/* Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+          laborum! */}
         </p>
       </div>
       <div className="space-y-4">

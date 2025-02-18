@@ -6,6 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { useNavigate } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
@@ -31,6 +32,7 @@ const LectureTab = () => {
 
   const {data:lectureData,refetch} = useGetLectureByIdQuery(lectureId);
   const lecture = lectureData?.lecture;
+  const navigate = useNavigate();
 
   useEffect(()=>{
     if(lecture){
@@ -92,16 +94,45 @@ const LectureTab = () => {
     await removeLecture(lectureId);
   }
 
-  useEffect(() => {
-    if (isSuccess) {
-        refetch();
-      toast.success(data.message);
-    }
-    if (error) {
-      toast.error(error.data.message);
-    }
-  }, [isSuccess, error]);
+  // useEffect(() => {
+  //   if (isSuccess) {
+      
+      
+      
+  //       refetch();
 
+  //     toast.success(data.message);
+  //     setTimeout(() => {
+  //       window.location.reload();
+  //     }, 1000); 
+  //     navigate(`/admin/course/${courseId}/lecture`);
+  //   }
+  //   if (error) {
+  //     toast.error(error.data.message);
+  //   }
+  // }, [isSuccess, error]);
+  useEffect(() => {
+    const handleSuccess = async () => {
+      if (isSuccess) {
+        toast.success(data.message);
+        
+        // Wait for the page to refresh first
+        await new Promise((resolve) => setTimeout(resolve, 1400));
+        
+        // Then navigate to the lecture list page
+        navigate(`/admin/course/${courseId}/lecture`);
+  
+        window.location.reload();
+      }
+  
+      if (error) {
+        toast.error(error.data.message);
+      }
+    };
+  
+    handleSuccess();
+  }, [isSuccess, error]);
+  
   useEffect(()=>{
     if(removeSuccess){
       toast.success(removeData.message);
