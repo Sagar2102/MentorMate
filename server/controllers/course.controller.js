@@ -33,7 +33,7 @@ export const createCourse = async (req,res) => {
 export const searchCourse = async (req,res) => {
     try {
         const {query = "", categories = [], sortByPrice =""} = req.query;
-        console.log(categories);
+        // console.log(categories);
         
         // create search query
         const searchCriteria = {
@@ -337,3 +337,22 @@ export const togglePublishCourse = async (req,res) => {
         })
     }
 }
+
+export const deleteCourse = async (req, res) => {
+    try {
+      const { courseId } = req.params;
+  
+      // Delete the course
+      const deletedCourse = await Course.findByIdAndDelete(courseId);
+  
+      if (!deletedCourse) {
+        return res.status(404).json({ message: "Course not found" });
+      }
+  
+      res.status(200).json({ message: "Course deleted successfully" });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Failed to delete course" });
+    }
+  };
+  
