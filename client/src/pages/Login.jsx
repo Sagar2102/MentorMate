@@ -535,10 +535,10 @@ const Login = () => {
       
       setActiveTab("login");
       
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
-      toast.success("Signup successful.Now Login.");
+      // setTimeout(() => {
+      //   window.location.reload();
+      // }, 1000);
+      toast.success("Success");
     }
     if (registerError) {
       toast.error(registerError.data.message || "Signup Failed");

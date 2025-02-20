@@ -137,6 +137,30 @@ export const stripeWebhook = async (req, res) => {
   }
   res.status(200).send();
 };
+// export const getCourseDetailWithPurchaseStatus = async (req, res) => {
+//   try {
+//     const { courseId } = req.params;
+//     const userId = req.id;
+
+//     const course = await Course.findById(courseId)
+//       .populate({ path: "creator" })
+//       .populate({ path: "lectures" });
+
+//     const purchased = await CoursePurchase.findOne({ userId, courseId });
+//     console.log(purchased);
+
+//     if (!course) {
+//       return res.status(404).json({ message: "course not found!" });
+//     }
+
+//     return res.status(200).json({
+//       course,
+//       purchased: !!purchased, // true if purchased, false otherwise
+//     });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 export const getCourseDetailWithPurchaseStatus = async (req, res) => {
   try {
     const { courseId } = req.params;
@@ -146,19 +170,19 @@ export const getCourseDetailWithPurchaseStatus = async (req, res) => {
       .populate({ path: "creator" })
       .populate({ path: "lectures" });
 
-    const purchased = await CoursePurchase.findOne({ userId, courseId });
-    console.log(purchased);
-
     if (!course) {
-      return res.status(404).json({ message: "course not found!" });
+      return res.status(404).json({ message: "Course not found!" });
     }
+
+    const purchased = await CoursePurchase.findOne({ userId, courseId });
 
     return res.status(200).json({
       course,
-      purchased: !!purchased, // true if purchased, false otherwise
+      purchased: purchased?.status === "completed", // Only return true if payment is completed
     });
   } catch (error) {
     console.log(error);
+    return res.status(500).json({ message: "Internal Server Error" });
   }
 };
 
