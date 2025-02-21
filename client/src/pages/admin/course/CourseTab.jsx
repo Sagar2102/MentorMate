@@ -389,16 +389,33 @@ const CourseTab = () => {
     }
   };
 
+  // const handleDeleteCourse = async () => {
+  //   try {
+  //     await deleteCourse(courseId).unwrap();
+  //     toast.success("Course deleted successfully.");
+  //     await new Promise((resolve) => setTimeout(resolve, 650));
+  //     navigate("/admin/course"); 
+  //     // Navigate back to the course list after deletion
+  //     window.location.reload();
+  //   } catch (error) {
+  //     toast.error(error.data?.message || "Failed to delete course.");
+  //   }
+  // };
   const handleDeleteCourse = async () => {
-    try {
-      await deleteCourse(courseId).unwrap();
-      toast.success("Course deleted successfully.");
-      await new Promise((resolve) => setTimeout(resolve, 650));
-      navigate("/admin/course"); 
-      // Navigate back to the course list after deletion
-      window.location.reload();
-    } catch (error) {
-      toast.error(error.data?.message || "Failed to delete course.");
+    if (window.confirm(`WARNING!!!
+      
+All data related to this course will be permanently deleted form the site.Any details related to this course cannot be accessed and will not be visible after this step.
+
+Do you still want to continue?`)) {
+      try {
+        await deleteCourse(courseId).unwrap();
+        toast.success("Course deleted successfully.");
+        await new Promise((resolve) => setTimeout(resolve, 650));
+        navigate("/admin/course");
+        window.location.reload();
+      } catch (error) {
+        toast.error(error.data?.message || "Failed to delete course.");
+      }
     }
   };
 
