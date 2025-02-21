@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon server/index.js",
-    "stripe": "stripe listen --forward-to localhost:8080/api/v1/purchase/webhook",
+    "stripe": "stripe listen --forward-to https://mentormate-vlyu.onrender.com/api/v1/purchase/webhook",
     "build": "npm install && cd client && npm install && npm run build && cd ..",
     "start": "nodemon server/index.js"
   },
