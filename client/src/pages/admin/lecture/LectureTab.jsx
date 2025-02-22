@@ -83,7 +83,7 @@ const LectureTab = () => {
     await edtiLecture({
       lectureTitle,
       videoInfo:uploadVideInfo,
-      isPreviewFree:isFree,
+      isPreviewFree:true,
       courseId,
       lectureId,
       
@@ -181,10 +181,10 @@ const LectureTab = () => {
             className="w-fit"
           />
         </div>
-        <div className="flex items-center space-x-2 my-5">
+        {/* <div className="flex items-center space-x-2 my-5">
           <Switch checked={isFree} onCheckedChange={setIsFree} id="airplane-mode" />
           <Label htmlFor="airplane-mode">Is this video FREE</Label>
-        </div>
+        </div> */}
 
         {mediaProgress && (
           <div className="my-4">
