@@ -26,6 +26,53 @@ MentorMate is a full-fledged e-learning platform where instructors can sell cour
 - **Authentication:** JSON Web Token (JWT)
 - **Payment Gateway:** Stripe (or any preferred service)
 
+## Screenshots
+- **Login Page** 
+![](https://res.cloudinary.com/dkk2rer7z/image/upload/v1740599463/samples/animals/Screenshot_2025-02-26_165629_honk6n.png)
+
+<br>
+
+- **Home Page** 
+![](https://res.cloudinary.com/dkk2rer7z/image/upload/v1740599483/samples/animals/Screenshot_2025-02-26_172842_dusxmf.png)
+
+<br>
+
+- **My Learning Page** 
+![](https://res.cloudinary.com/dkk2rer7z/image/upload/v1740600239/samples/animals/Screenshot_2025-02-27_013305_mekxjt.png)
+
+<br>
+
+- **Course Details Page** 
+![](https://res.cloudinary.com/dkk2rer7z/image/upload/v1740599481/samples/animals/Screenshot_2025-02-26_172750_wyphx6.png)
+
+<br>
+
+- **Payment Page** 
+![](https://res.cloudinary.com/dkk2rer7z/image/upload/v1740599473/samples/animals/Screenshot_2025-02-26_172332_zc3use.png)
+
+<br>
+
+- **Access Lectures Page (After Purchase)** 
+![](https://res.cloudinary.com/dkk2rer7z/image/upload/v1740599470/samples/animals/Screenshot_2025-02-26_172309_j5ubqy.png)
+
+<br>
+
+- **Create Course (For Instructor)** 
+![](https://res.cloudinary.com/dkk2rer7z/image/upload/v1740599470/samples/animals/Screenshot_2025-02-26_172309_j5ubqy.png)
+![](https://res.cloudinary.com/dkk2rer7z/image/upload/v1740599464/samples/animals/Screenshot_2025-02-26_170138_pyb73c.png)
+
+<br>
+
+- **** 
+![](https://res.cloudinary.com/dkk2rer7z/image/upload/v1740601036/samples/animals/Screenshot_2025-02-27_014631_rps8pf.png)
+![](https://res.cloudinary.com/dkk2rer7z/image/upload/v1740599469/samples/animals/Screenshot_2025-02-26_170407_urtrka.png)
+
+<br>
+
+- **Dashboard (For Instructor)** 
+![](https://res.cloudinary.com/dkk2rer7z/image/upload/v1740599475/samples/animals/Screenshot_2025-02-26_172549_jtuvqt.png)
+
+
 ## Installation
 
 ### Prerequisites
