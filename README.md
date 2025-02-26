@@ -11,7 +11,7 @@ MentorMate is a full-fledged e-learning platform where instructors can sell cour
 
 ### For Students
 - **Course Enrollment:** Buy and access courses anytime.
-- **Interactive Learning:** Watch videos, access materials, and take quizzes.
+- **Interactive Learning:** Watch videos lectures by instructors.
 - **Progress Tracking:** Monitor course completion status.
 
 ### Other Features
