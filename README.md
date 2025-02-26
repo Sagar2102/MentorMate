@@ -58,12 +58,12 @@ MentorMate is a full-fledged e-learning platform where instructors can sell cour
 <br>
 
 - **Create Course (For Instructor)** 
-![](https://res.cloudinary.com/dkk2rer7z/image/upload/v1740599470/samples/animals/Screenshot_2025-02-26_172309_j5ubqy.png)
+![](https://res.cloudinary.com/dkk2rer7z/image/upload/v1740599464/samples/animals/Screenshot_2025-02-26_170032_f4rhaq.png)
 ![](https://res.cloudinary.com/dkk2rer7z/image/upload/v1740599464/samples/animals/Screenshot_2025-02-26_170138_pyb73c.png)
 
 <br>
 
-- **** 
+- **Create Lecture (For Instructor)** 
 ![](https://res.cloudinary.com/dkk2rer7z/image/upload/v1740601036/samples/animals/Screenshot_2025-02-27_014631_rps8pf.png)
 ![](https://res.cloudinary.com/dkk2rer7z/image/upload/v1740599469/samples/animals/Screenshot_2025-02-26_170407_urtrka.png)
 
